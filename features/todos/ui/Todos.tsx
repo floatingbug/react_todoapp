@@ -2,21 +2,15 @@
 
 
 import { useState } from "react";
-import AddTodo from "./components/addTodo/AddTodo";
-import TodoList from "./components/todoList/TodoList";
-import { Todo } from "../types/Todo";
+import { AddTodo, TodoList } from "./components";
+import { type Todo } from "../types/Todo";
 
 
 export default function Todos() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   function addTodo(newTodo: Todo): void {
-    const newTodos = [
-      ...todos,
-      newTodo,
-    ];
-
-    setTodos(newTodos);
+    setTodos(prev => [...prev, newTodo]);
   }
 
   function deleteTodo(todoId: string) {

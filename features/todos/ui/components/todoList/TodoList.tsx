@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Todo } from "../../../types/Todo";
+import { type Todo } from "../../../types/Todo";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,23 +26,17 @@ export default function TodoList({ todos, onDeleteTodo }: TodoListProps) {
                 <div className="flex gap-2"
                   key={todo.todoId}
                 >
-                  <div>
-                    <Checkbox />
-                  </div>
+                  <Checkbox />
 
-                  <div>
-                    {todo.text}
-                  </div>
+                  {todo.text}
 
-                  <div className="ml-auto">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => onDeleteTodo(todo.todoId)}
-                    >
-                      <Trash2 />
-                    </Button>
-                  </div>
+                  <Button className="ml-auto"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => onDeleteTodo(todo.todoId)}
+                  >
+                    <Trash2 />
+                  </Button>
                 </div>
               )
             })

@@ -4,7 +4,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Todo } from "../../../types/Todo";
+import { type Todo } from "../../../types/Todo";
 
 
 interface AddTodoProps {
@@ -20,14 +20,13 @@ export default function AddTodo({ onAddTodo }: AddTodoProps) {
   }
 
   function handleAddTodo(): void {
-    if (todoInput === "") return;
+    if (!todoInput.trim()) return;
 
-    const newTodo: Todo = {
+
+    onAddTodo({
       text: todoInput,
       todoId: crypto.randomUUID(),
-    };
-
-    onAddTodo(newTodo);
+    });
 
     setTodoInput("");
   }
